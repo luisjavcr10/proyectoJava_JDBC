@@ -5,14 +5,24 @@ public class Employee
     private int idEmployee;
     private String firstName;
     private String lastName;
+    private String curp;
+
+    public String getCurp() {
+        return curp;
+    }
+
+    public void setCurp(String curp) {
+        this.curp = curp;
+    }
 
     public Employee() {
     }
 
-    public Employee(int idEmployee, String firstName, String lastName) {
+    public Employee(int idEmployee, String firstName, String lastName,String curp) {
         this.idEmployee = idEmployee;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.curp = curp;
     }
 
     public int getIdEmployee() {
@@ -45,6 +55,7 @@ public class Employee
                 "idEmployee=" + idEmployee +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", curp='" + curp + '\'' +
                 '}';
     }
 }
