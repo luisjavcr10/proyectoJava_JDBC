@@ -9,25 +9,10 @@ import java.sql.*;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-        try(Connection myCon = DatabaseConnection.getInstance()){
-            if(myCon.getAutoCommit()){
-                myCon.setAutoCommit(false);
-            }
+        Repository<Employee> repository = new EmployeeRepository();
+        repository.findAll().forEach(System.out::println);
+        System.out.println("Buscar por id");
+        System.out.println(repository.getById(10));
 
-            try{
-                Repository<Employee> repository = new EmployeeRepository(myCon);
-                Employee employee = new Employee();
-                employee.setIdEmployee(9);
-                employee.setFirstName("Luis");
-                employee.setLastName("Ruiz");
-                employee.setCurp("AMFJDV1343KD");
-                repository.save(employee);
-                myCon.commit();
-
-            } catch (SQLException e) {
-                myCon.rollback();
-                throw new RuntimeException(e);
-            }
-        }
     }
 }
